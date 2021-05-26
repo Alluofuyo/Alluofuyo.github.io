@@ -1,0 +1,55 @@
+<html>
+
+<head>
+  <title>循环语句练习</title>
+
+</head>
+
+<body style="background-color: rgb(54,59,64);color:white;">
+  <div>
+    <script>
+      var emp = new Array(3);
+
+      emp[0] = "Ryan Dias";
+      emp[1] = "Graham Browne";
+      emp[2] = "David Greene";
+      emp.sort();
+      document.write("排序结果是: <button>正序</button><HR>");
+      document.write("<div id='container'><div>");
+      let container = document.getElementById("container");
+      let btn = document.getElementsByTagName("button")[0];
+
+      //打印排序结果
+      const printResult = () => {
+        for (var i = 0; i < emp.length; i++) {
+          container.innerHTML += emp[i] + "<br>";
+        }
+        var x = emp.join();
+        container.innerHTML += "<br>" + x;
+      };
+
+      printResult();
+
+      document.getElementsByTagName("button")[0].addEventListener("click", (e) => {
+        if (btn.textContent === "正序") {
+          emp.sort((a, b) => b.localeCompare(a));
+          container.innerHTML = "";
+          printResult();
+          btn.textContent = "倒序";
+        } else {
+          emp.sort((a, b) => a.localeCompare(b));
+          container.innerHTML = "";
+          printResult();
+          btn.textContent = "正序";
+        }
+      })
+
+
+    </script>
+
+  </div>
+
+
+</body>
+
+</html>

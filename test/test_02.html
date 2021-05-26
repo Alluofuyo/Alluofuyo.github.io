@@ -1,0 +1,84 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <div>
+    <button id="create_car">通过工厂模式生产小汽车</button>
+    <div>name: <span id="factory_name"></span></div>
+    <div>color: <span id="factory_color"></span></div>
+    <div>wheel: <span id="factory_wheel"></span></div>
+    <div>are two object the same: <span id="f_two_same"></span></div>
+    <script>
+      function createCar(name, color, wheel) {
+        let car = new Object();
+        car.name = name;
+        car.color = color;
+        car.wheel = wheel;
+        car.show = () => {
+          alert(car.name);
+        }
+        return car;
+      }
+      document.getElementById("create_car").onclick = () => {
+        let factory_car = createCar("BMW", "black", "4");
+        document.getElementById("factory_name").textContent = factory_car.name;
+        document.getElementById("factory_color").textContent = factory_car.color;
+        document.getElementById("factory_wheel").textContent = factory_car.wheel;
+        document.getElementById("f_two_same").textContent = createCar("one", "1", "1") == createCar("two", "2", "2");
+        factory_car.show();
+      };
+    </script>
+  </div>
+  <div>
+    <button id="construct_car">通过构造函数生产小汽车</button>
+    <div>name: <span id="construct_name"></span></div>
+    <div>color: <span id="construct_color"></span></div>
+    <div>wheel: <span id="construct_wheel"></span></div>
+    <script>
+      function Car(name, color, wheel) {
+        this.name = name;
+        this.color = color;
+        this.wheel = wheel;
+        this.show = () => {
+          alert(this.name);
+        }
+      }
+      document.getElementById("construct_car").onclick = () => {
+        let construct_car = new Car("Benz", "silver", "4");
+        document.getElementById("construct_name").textContent = construct_car.name;
+        document.getElementById("construct_color").textContent = construct_car.color;
+        document.getElementById("construct_wheel").textContent = construct_car.wheel;
+        construct_car.show();
+      };
+    </script>
+  </div>
+  <div>
+    <button id="prototype_car">通过原型生产小汽车</button>
+    <div>name: <span id="prototype_name"></span></div>
+    <div>color: <span id="prototype_color"></span></div>
+    <div>wheel: <span id="prototype_wheel"></span></div>
+    <script>
+      function PCar(name, color, wheel) {
+        this.name = name;
+        PCar.prototype.color = color;
+        this.wheel = wheel;
+
+      }
+      PCar.prototype.show = () => {
+        alert(this.name);
+      };
+      document.getElementById("prototype_car").onclick = () => {
+        let prototype_car = new PCar("Audi", "white", "4");
+        document.getElementById("prototype_name").textContent = prototype_car.name;
+        document.getElementById("prototype_color").textContent = prototype_car.color;
+        document.getElementById("prototype_wheel").textContent = prototype_car.wheel;
+        prototype_car.show();
+      };
+    </script>
+  </div>
+</body>
+
+</html>
